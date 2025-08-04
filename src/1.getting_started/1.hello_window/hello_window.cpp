@@ -27,7 +27,7 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     // GLFW_OPENGL_CORE_PROFILE(核心模式) GLFW_OPENGL_COMPAT_PROFILE(兼容模式-立即模式)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    // 用于Mac OS X系统
+
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
@@ -65,9 +65,10 @@ int main() {
 
         // 渲染指令
         // 生成随机颜色
-        const float r = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);// 从0到1的随机数
-        const float g = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);// 从0到1的随机数
-        const float b = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);// 从0到1的随机数
+        // 从0到1的随机数
+        const float r = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+        const float g = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+        const float b = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
 
         // 设置清除颜色
         // glClearColor定义了在清除颜色缓冲区时所使用的颜色
