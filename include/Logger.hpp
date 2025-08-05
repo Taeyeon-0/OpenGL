@@ -12,6 +12,9 @@
 #include <memory>
 
 class PlogWrapper {
+    static inline bool _initialized = false;
+    static inline plog::Severity _level = plog::info;
+
 public:
     enum class OutputType {
         Console,
@@ -30,11 +33,12 @@ public:
     };
 
     enum class FormatType {
-        Full,      // 包含时间戳、级别、行号等的完整格式 (使用 TextFormatter)
+        Full,      // 包含时间戳、级别、行号等的完整格式 (使用 TxtFormatter)
         MessageOnly// 只包含日志消息本身 (使用 MessageOnlyFormatter)
     };
 
-    static void init(Level level = Level::Info, OutputType output = OutputType::Console, FormatType format = FormatType::Full,
+    static void init(Level level = Level::Info, OutputType output = OutputType::Console,
+                     FormatType format = FormatType::Full,
                      const std::string& filePath = "app.log",
                      unsigned maxFileSize = 10 * 1024 * 1024,// 10 MB
                      unsigned maxFiles = 3) {
@@ -92,10 +96,11 @@ public:
         }
 
         plog::IAppender* appender = nullptr;
+
         if (consoleAppender) {
             appender = consoleAppender.get();
-        } else if (consoleAppender) {
-            appender = consoleAppender.get();
+        } else if (fileAppender) {
+            appender = fileAppender.get();
         }
 
         if (!appender) {
@@ -104,9 +109,7 @@ public:
         }
 
         plog::init(_level, appender);
-    }
 
-private:
-    static inline bool _initialized = false;
-    static inline plog::Severity _level = plog::info;
+        _initialized = true;
+    }
 };
