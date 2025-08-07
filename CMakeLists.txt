@@ -9,4 +9,9 @@ find_package(glad CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 find_package(plog CONFIG REQUIRED)
 
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
 add_subdirectory(src/1.getting_started/1.hello_window)
+
+add_subdirectory(src/2.lighting/1.colors)
+add_subdirectory(src/2.lighting/2.basic_lighting)
