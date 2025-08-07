@@ -15,3 +15,4 @@ add_subdirectory(src/1.getting_started/1.hello_window)
 
 add_subdirectory(src/2.lighting/1.colors)
 add_subdirectory(src/2.lighting/2.basic_lighting)
+add_subdirectory(src/2.lighting/3.materials)
