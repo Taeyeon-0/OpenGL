@@ -2,7 +2,7 @@
 REM === Windows Build Script ===
 
 echo --- Installing dependencies ---
-conan install . --build=missing --output-folder=build --profile=conan_profile_windows.txt --deployer direct_deploy
+conan install . --build=missing --output-folder=build --profile=conan_profile_win.txt --deployer direct_deploy
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM === Enter build directory ===
