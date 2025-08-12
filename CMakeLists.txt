@@ -13,6 +13,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 
 add_subdirectory(src/1.getting_started/1.hello_window)
 add_subdirectory(src/1.getting_started/2.hello_triangle)
+add_subdirectory(src/1.getting_started/3.shaders)
 
 add_subdirectory(src/2.lighting/1.colors)
 add_subdirectory(src/2.lighting/2.basic_lighting)
