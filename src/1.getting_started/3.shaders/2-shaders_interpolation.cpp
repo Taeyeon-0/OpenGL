@@ -1,7 +1,7 @@
 // 使用uniform设置shader
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <Logger.hpp>
+#include <iostream>
 
 float vertices[] = {
     // positions         // colors
@@ -53,7 +53,7 @@ int main() {
 
     GLFWwindow* window = glfwCreateWindow(800, 600, "Hello Shader", nullptr, nullptr);
     if (window == nullptr) {
-        LOG_ERROR << "Failed to create GLFW window";
+        std::cerr << "Failed to create GLFW window";
         glfwTerminate();
         return -1;
     }
@@ -61,7 +61,7 @@ int main() {
     glfwMakeContextCurrent(window);
 
     if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))) {
-        LOG_ERROR << "Failed to initialize GLAD";
+        std::cerr << "Failed to initialize GLAD";
         return -1;
     }
 
@@ -79,7 +79,7 @@ int main() {
     glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(vertexShader, 512, nullptr, infoLog);
-        LOG_ERROR << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"
+        std::cerr << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"
                   << infoLog;
     }
 
@@ -90,7 +90,7 @@ int main() {
     glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(fragmentShader, 512, nullptr, infoLog);
-        LOG_ERROR << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n"
+        std::cerr << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n"
                   << infoLog;
     }
 
@@ -102,7 +102,7 @@ int main() {
     glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
     if (!success) {
         glGetProgramInfoLog(shaderProgram, 512, nullptr, infoLog);
-        LOG_ERROR << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n"
+        std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n"
                   << infoLog;
     }
     glDeleteShader(vertexShader);

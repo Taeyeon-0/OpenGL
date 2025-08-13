@@ -8,7 +8,7 @@
 // glfw 主要负责窗口，opengl上下文，输入管理
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <Logger.hpp>
+#include <iostream>
 
 constexpr unsigned int SCR_WIDTH = 800;
 constexpr unsigned int SCR_HEIGHT = 600;
@@ -50,7 +50,7 @@ int main() {
     // 创建一个窗口对象
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Hello_Window", nullptr, nullptr);
     if (window == nullptr) {
-        LOG_ERROR << "Failed to create GLFW window";
+        std::cerr << "Failed to create GLFW window";
         // 结束GLFW，释放资源
         glfwTerminate();
         return -1;

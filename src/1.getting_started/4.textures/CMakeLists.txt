@@ -6,5 +6,8 @@ foreach(source_file ${SOURCES})
     target_link_libraries(${example} glad::glad glfw glm::glm plog::plog stb::stb)
 endforeach()
 
+file(COPY ${CMAKE_SOURCE_DIR}/resources/textures
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/resources)
+
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Shader
-     DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Shader)
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

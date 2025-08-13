@@ -9,5 +9,7 @@ uniform sampler2D texture1;
 
 void main()
 {
-	FragColor = texture(texture1, TexCoord);
+	// FragColor = texture(texture1, TexCoord);
+	// 顶点颜色和纹理颜色的混合色
+	FragColor = texture(texture1, TexCoord) * vec4(ourColor, 1.0);
 }
