@@ -1,0 +1,167 @@
+{
+  "version": 6,
+  "configurePresets": [
+      {
+          "name": "windows-base",
+          "hidden": true,
+          "generator": "Ninja",
+          "cacheVariables": {
+              "CMAKE_CXX_COMPILER": "cl"
+          },
+          "condition": {
+              "type": "equals",
+              "lhs": "${hostSystemName}",
+              "rhs": "Windows"
+          },
+          "vendor": {
+              "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                  "enableClangTidyCodeAnalysis": true,
+                  "enableMicrosoftCodeAnalysis": false
+              }
+          }
+      },
+      {
+          "name": "windows-debug",
+          "generator": "Ninja",
+          "inherits": "windows-base",
+          "binaryDir": "${sourceDir}/build/Debug",
+          "cacheVariables": {
+              "CMAKE_BUILD_TYPE": "Debug",
+              "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/Debug/generators/conan_toolchain.cmake"
+          }
+      },
+      {
+          "name": "windows-release",
+          "generator": "Ninja",
+          "inherits": "windows-base",
+          "binaryDir": "${sourceDir}/build/Release",
+          "cacheVariables": {
+              "CMAKE_BUILD_TYPE": "Release",
+              "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/Release/generators/conan_toolchain.cmake"
+          }
+      },
+      {
+          "name": "windows-relwithdebinfo",
+          "generator": "Ninja",
+          "inherits": "windows-base",
+          "binaryDir": "${sourceDir}/build/RelWithDebInfo",
+          "cacheVariables": {
+              "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+              "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/RelWithDebInfo/generators/conan_toolchain.cmake"
+          }
+      },
+      {
+          "name": "linux-base",
+          "hidden": true,
+          "generator": "Ninja",
+          "cacheVariables": {
+              "CMAKE_CXX_COMPILER": "g++"
+          },
+          "condition": {
+              "type": "equals",
+              "lhs": "${hostSystemName}",
+              "rhs": "Linux"
+          }
+      },
+      {
+          "name": "linux-debug",
+          "generator": "Ninja",
+          "inherits": "linux-base",
+          "binaryDir": "${sourceDir}/build/Debug",
+          "cacheVariables": {
+              "CMAKE_BUILD_TYPE": "Debug",
+              "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/Debug/generators/conan_toolchain.cmake"
+          }
+      },
+      {
+          "name": "linux-release",
+          "generator": "Ninja",
+          "inherits": "linux-base",
+          "binaryDir": "${sourceDir}/build/Release",
+          "cacheVariables": {
+              "CMAKE_BUILD_TYPE": "Release",
+              "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/Release/generators/conan_toolchain.cmake"
+          }
+      },
+      {
+          "name": "linux-relwithdebinfo",
+          "generator": "Ninja",
+          "inherits": "linux-base",
+          "binaryDir": "${sourceDir}/build/RelWithDebInfo",
+          "cacheVariables": {
+              "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+              "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/RelWithDebInfo/generators/conan_toolchain.cmake"
+          }
+      }
+  ],
+  "buildPresets": [
+      {
+          "name": "windows-debug",
+          "configurePreset": "windows-debug"
+      },
+      {
+          "name": "windows-release",
+          "configurePreset": "windows-release"
+      },
+      {
+          "name": "windows-relwithdebinfo",
+          "configurePreset": "windows-relwithdebinfo"
+      },
+      {
+          "name": "linux-debug",
+          "configurePreset": "linux-debug"
+      },
+      {
+          "name": "linux-release",
+          "configurePreset": "linux-release"
+      },
+      {
+          "name": "linux-relwithdebinfo",
+          "configurePreset": "linux-relwithdebinfo"
+      }
+  ],
+  "testPresets": [
+      {
+          "name": "windows-debug",
+          "configurePreset": "windows-debug",
+          "output": {
+              "outputOnFailure": true
+          }
+      },
+      {
+          "name": "windows-release",
+          "configurePreset": "windows-release",
+          "output": {
+              "outputOnFailure": true
+          }
+      },
+      {
+          "name": "windows-relwithdebinfo",
+          "configurePreset": "windows-relwithdebinfo",
+          "output": {
+              "outputOnFailure": true
+          }
+      },
+      {
+          "name": "linux-debug",
+          "configurePreset": "linux-debug",
+          "output": {
+              "outputOnFailure": true
+          }
+      },
+      {
+          "name": "linux-release",
+          "configurePreset": "linux-release",
+          "output": {
+              "outputOnFailure": true
+          }
+      },
+      {
+          "name": "linux-relwithdebinfo",
+          "configurePreset": "linux-relwithdebinfo",
+          "output": {
+              "outputOnFailure": true
+          }
+      }
+  ]
+}

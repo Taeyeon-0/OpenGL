@@ -1,0 +1,5 @@
+CompileFlags:
+  CompilationDatabase: @COMPILE_COMMANDS_DIR@
+
+InlayHints:
+  Enabled: false

@@ -1,22 +1,27 @@
-cmake_minimum_required(VERSION 3.15)
-project(OpenGL_Learning)
+cmake_minimum_required(VERSION 3.21)
+project(TEST VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(glm CONFIG REQUIRED)
-find_package(glad CONFIG REQUIRED)
-find_package(glfw3 CONFIG REQUIRED)
-find_package(plog CONFIG REQUIRED)
-find_package(stb CONFIG REQUIRED)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_subdirectory(src/1.getting_started/1.hello_window)
-add_subdirectory(src/1.getting_started/2.hello_triangle)
-add_subdirectory(src/1.getting_started/3.shaders)
-add_subdirectory(src/1.getting_started/4.textures)
+set(COMPILE_COMMANDS_DIR "${CMAKE_BINARY_DIR}")
+configure_file(${CMAKE_SOURCE_DIR}/.clangd.in ${CMAKE_SOURCE_DIR}/.clangd @ONLY)
 
-add_subdirectory(src/2.lighting/1.colors)
-add_subdirectory(src/2.lighting/2.basic_lighting)
-add_subdirectory(src/2.lighting/3.materials)
+find_package(Qt5 REQUIRED COMPONENTS Core Widgets)
+
+add_executable(${PROJECT_NAME}
+    src/main.cpp
+)
+
+target_link_libraries(${PROJECT_NAME}
+    PRIVATE
+        Qt5::Core
+        Qt5::Widgets
+)

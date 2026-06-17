@@ -1,2 +1,0 @@
-# OpenGL
-opengl learning
