@@ -5,16 +5,12 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
-
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(COMPILE_COMMANDS_DIR "${CMAKE_BINARY_DIR}")
 configure_file(${CMAKE_SOURCE_DIR}/.clangd.in ${CMAKE_SOURCE_DIR}/.clangd @ONLY)
 
-find_package(Qt5 REQUIRED COMPONENTS Core Widgets)
+find_package(glfw3 CONFIG REQUIRED)
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
@@ -22,6 +18,5 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        Qt5::Core
-        Qt5::Widgets
+        glfw
 )

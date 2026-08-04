@@ -1,0 +1,8 @@
+{
+  "python.analysis.extraPaths": [
+    "${env:HOME}/.local/share/pipx/venvs/conan/lib/python3.14/site-packages"
+  ],
+  "clangd.arguments": [
+    "--query-driver=/usr/bin/g++"
+  ]
+}
