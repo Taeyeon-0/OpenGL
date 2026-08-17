@@ -11,6 +11,7 @@ set(COMPILE_COMMANDS_DIR "${CMAKE_BINARY_DIR}")
 configure_file(${CMAKE_SOURCE_DIR}/.clangd.in ${CMAKE_SOURCE_DIR}/.clangd @ONLY)
 
 find_package(glfw3 CONFIG REQUIRED)
+find_package(OpenGL REQUIRED)
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
@@ -19,4 +20,5 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
         glfw
+        OpenGL::GL
 )
